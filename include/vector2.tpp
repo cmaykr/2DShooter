@@ -1,0 +1,11 @@
+#include "vector2.h"
+
+template <typename T>
+Vector2<T> Vector2<T>::operator+(Vector2<T> const& rhs)
+{
+    Vector2<T> newVec{};
+    newVec.x = x + rhs.x;
+    newVec.y = y + rhs.y;
+
+    return newVec;
+}
