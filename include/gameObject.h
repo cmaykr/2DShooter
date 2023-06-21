@@ -9,15 +9,21 @@ class GameObject
 {
 public:
     GameObject() = default;
-    ~GameObject() = default;
+    GameObject(GameObject * parent);
+    GameObject(GameObject const&) = delete;
+    virtual ~GameObject() = default;
     
+    GameObject operator=(GameObject const& rhs) = delete;
+
     Vector2<int> globalPosition() const;
 
-    void handleInput();
-    void fixedUpdate();
-    void draw() const;
+    virtual void handleInput();
+    virtual void fixedUpdate();
+    virtual void draw() const;
+
+    void setPosition(Vector2<int> const& position);
 private:
-    Vector2<int> localPosition{};
+    Vector2<int> _position{};
     GameObject *parent{};
 
     std::vector<std::unique_ptr<GameObject>> children{}; 
