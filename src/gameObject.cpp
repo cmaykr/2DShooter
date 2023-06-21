@@ -1,16 +1,18 @@
 #include "gameObject.h"
 
+#include <iostream>
+
 GameObject::GameObject(GameObject *parent)
-    : parent(parent)
+    : _parent(parent)
 {
 }
 
 Vector2<int> GameObject::globalPosition() const
 {
-    if (parent == nullptr)
+    if (_parent == nullptr)
         return _position;
 
-    return parent->globalPosition() + _position;
+    return _parent->globalPosition() + _position;
 }
 
 void GameObject::handleInput()
@@ -28,10 +30,20 @@ void GameObject::fixedUpdate()
 
 void GameObject::draw() const
 {
-    // TODO: Implement
+    std::cout << globalPosition().x << " ";
+    for (auto const& child : children)
+    {
+        child->draw();
+        std::cout << child->globalPosition().x << std::endl;
+    }
 }
 
 void GameObject::setPosition(Vector2<int> const& position)
 {
     _position = position;
+}
+
+void GameObject::addChild(GameObject * child)
+{
+    children.push_back(child);
 }

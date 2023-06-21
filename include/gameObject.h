@@ -22,9 +22,12 @@ public:
     virtual void draw() const;
 
     void setPosition(Vector2<int> const& position);
+    void addChild(GameObject * child);
+protected:
+    GameObject *parent() const;
 private:
     Vector2<int> _position{};
-    GameObject *parent{};
+    GameObject *_parent{};
 
-    std::vector<std::unique_ptr<GameObject>> children{}; 
+    std::vector<GameObject*> children{}; // TODO: Use unique_ptr
 };

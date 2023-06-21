@@ -29,14 +29,8 @@ void Game::run()
     double fixedt{1000.0 / static_cast<double>(targetFPS)};
 
     // Sprite test
-        Sprite testSprite{"resources/RubberDucky.png", Vector2{100, 100}};
+        Sprite testSprite{renderer, "resources/RubberDucky.png", Vector2{100, 100}};
         testSprite.setPosition(Vector2(500, 200));
-        SDL_Rect dsrect;
-        dsrect.h = testSprite.size().y;
-        dsrect.w = testSprite.size().x;
-        dsrect.x = testSprite.globalPosition().x;
-        dsrect.y = testSprite.globalPosition().y;
-        SDL_Texture *tex {IMG_LoadTexture(renderer, testSprite.texturePath().c_str())};
     // End Sprite test
 
     while (isRunning)
@@ -55,7 +49,8 @@ void Game::run()
         
         SDL_RenderClear(renderer);
         draw();
-        SDL_RenderCopy(renderer, tex, NULL, &dsrect);
+        testSprite.draw();
+        //SDL_RenderCopy(renderer, tex, NULL, &dsrect);
         SDL_RenderPresent(renderer);
 
         accumulatorElapsedTime += clock.restart();
