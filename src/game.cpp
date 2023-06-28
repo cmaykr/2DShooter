@@ -50,7 +50,6 @@ void Game::run()
         SDL_RenderClear(renderer);
         draw();
         testSprite.draw();
-        //SDL_RenderCopy(renderer, tex, NULL, &dsrect);
         SDL_RenderPresent(renderer);
 
         accumulatorElapsedTime += clock.restart();

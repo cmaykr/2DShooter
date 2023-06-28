@@ -47,3 +47,8 @@ void GameObject::addChild(GameObject * child)
 {
     children.push_back(child);
 }
+
+GameObject *GameObject::parent() const
+{
+    return _parent;
+}

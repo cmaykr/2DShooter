@@ -11,9 +11,7 @@ public:
     DrawableObject(DrawableObject const&) = delete;
     virtual ~DrawableObject() = default;
 
-    DrawableObject operator=(DrawableObject const&) = delete;
-
-    void draw() const override = 0;
+    void draw() const override {}
 protected:
     SDL_Renderer *renderer() const;
 private:
