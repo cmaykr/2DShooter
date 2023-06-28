@@ -7,10 +7,17 @@ GameObject::GameObject(GameObject *parent)
 {
 }
 
+GameObject::GameObject(SDL_Renderer *renderer)
+    : _renderer(renderer)
+{
+}
+
 Vector2<int> GameObject::globalPosition() const
 {
     if (_parent == nullptr)
+    {
         return _position;
+    }
 
     return _parent->globalPosition() + _position;
 }
@@ -51,4 +58,9 @@ void GameObject::addChild(GameObject * child)
 GameObject *GameObject::parent() const
 {
     return _parent;
+}
+
+SDL_Renderer *GameObject::renderer() const
+{
+    return _renderer;
 }

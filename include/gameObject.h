@@ -4,12 +4,14 @@
 
 #include <memory>
 #include <vector>
+#include <SDL2/SDL.h>
 
 class GameObject
 {
 public:
     GameObject() = default;
     GameObject(GameObject * parent);
+    GameObject(SDL_Renderer * renderer);
     GameObject(GameObject const&) = delete;
     virtual ~GameObject() = default;
     
@@ -25,9 +27,11 @@ public:
     void addChild(GameObject * child);
 protected:
     GameObject *parent() const;
+    SDL_Renderer *renderer() const;
 private:
     Vector2<int> _position{};
     GameObject *_parent{};
+    SDL_Renderer *_renderer{};
 
     std::vector<GameObject*> children{}; // TODO: Use unique_ptr
 };

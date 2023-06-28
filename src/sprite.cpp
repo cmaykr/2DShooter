@@ -1,9 +1,10 @@
 #include "sprite.h"
 
 #include <SDL2/SDL_image.h>
+#include <iostream>
 
 Sprite::Sprite(SDL_Renderer * renderer, std::string const& texturePath, Vector2<int> const& size)
-    : DrawableObject(renderer), _texturePath(texturePath), _size(size), texture()
+    : GameObject(renderer), _texturePath(texturePath), _size(size), texture()
 {
     texture = IMG_LoadTexture(renderer, _texturePath.c_str());
 }

@@ -1,12 +1,12 @@
 #pragma once
 
 #include "vector2.h"
-#include "drawableObject.h"
+#include "gameObject.h"
 
 #include <string>
 #include <SDL2/SDL.h>
 
-class Sprite : public DrawableObject
+class Sprite : public GameObject
 {
 public:
     Sprite(SDL_Renderer * renderer, std::string const& texturePath, Vector2<int> const& size);
