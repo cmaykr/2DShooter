@@ -1,5 +1,6 @@
 #pragma once
 
+
 /// @brief Variable that hold 2 of the same type.  
 /// @tparam T Should be a primitive type.
 template <typename T>
@@ -14,5 +15,7 @@ public:
     T x;
     T y;
 };
+
+
 
 #include "vector2.tpp"

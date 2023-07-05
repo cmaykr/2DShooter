@@ -12,6 +12,17 @@ GameObject::GameObject(SDL_Renderer *renderer)
 {
 }
 
+void GameObject::setup(GameObject *parent, SDL_Renderer *renderer)
+{
+    if (!initialized)
+    {
+        _parent = parent;
+        _renderer = renderer;
+
+        initialized = true;
+    }
+}
+
 Vector2<int> GameObject::globalPosition() const
 {
     if (_parent == nullptr)
@@ -37,22 +48,15 @@ void GameObject::fixedUpdate()
 
 void GameObject::draw() const
 {
-    std::cout << globalPosition().x << " ";
     for (auto const& child : children)
     {
         child->draw();
-        std::cout << child->globalPosition().x << std::endl;
     }
 }
 
 void GameObject::setPosition(Vector2<int> const& position)
 {
     _position = position;
-}
-
-void GameObject::addChild(GameObject * child)
-{
-    children.push_back(child);
 }
 
 GameObject *GameObject::parent() const

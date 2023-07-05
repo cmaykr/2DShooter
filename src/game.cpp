@@ -29,8 +29,10 @@ void Game::run()
     double fixedt{1000.0 / static_cast<double>(targetFPS)};
 
     // Sprite test
-        Sprite testSprite{renderer, "resources/RubberDucky.png", Vector2{100, 100}};
-        testSprite.setPosition(Vector2(500, 200));
+        GameObject main{};
+        main.setup(nullptr, renderer);
+        main.addChild<Sprite>(renderer, "resources/RubberDucky.png", Vector2{100, 100});
+        main.setPosition(Vector2{1000, 200});
     // End Sprite test
 
     while (isRunning)
@@ -49,7 +51,7 @@ void Game::run()
         
         SDL_RenderClear(renderer);
         draw();
-        testSprite.draw();
+        main.draw();
         SDL_RenderPresent(renderer);
 
         accumulatorElapsedTime += clock.restart();
