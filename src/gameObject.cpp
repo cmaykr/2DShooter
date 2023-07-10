@@ -2,16 +2,6 @@
 
 #include <iostream>
 
-GameObject::GameObject(GameObject *parent)
-    : _parent(parent)
-{
-}
-
-GameObject::GameObject(SDL_Renderer *renderer)
-    : _renderer(renderer)
-{
-}
-
 void GameObject::setup(GameObject *parent, SDL_Renderer *renderer, ResourceManager *resourceManager)
 {
     if (!initialized)

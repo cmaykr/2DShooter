@@ -33,7 +33,7 @@ void Game::run()
     // Sprite test
         GameObject main{};
         main.setup(nullptr, renderer, &resourceManager);
-        main.addChild<Sprite>(renderer, "RubberDucky.png", Vector2{100, 100});
+        main.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
         main.setPosition(Vector2{1000, 200});
     // End Sprite test
 

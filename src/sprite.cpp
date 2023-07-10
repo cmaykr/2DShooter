@@ -3,8 +3,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-Sprite::Sprite(SDL_Renderer * renderer, std::string const& texturePath, Vector2<int> const& size)
-    : GameObject(renderer), _texturePath(texturePath), _size(size)
+Sprite::Sprite(std::string const& texturePath, Vector2<int> const& size)
+    : GameObject(), _texturePath(texturePath), _size(size)
 {
 
 }

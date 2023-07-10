@@ -11,8 +11,6 @@ class GameObject
 {
 public:
     GameObject() = default;
-    GameObject(GameObject * parent);
-    GameObject(SDL_Renderer * renderer);
     GameObject(GameObject const&) = delete;
     virtual ~GameObject() = default;
 
