@@ -16,6 +16,4 @@ public:
     T y;
 };
 
-
-
 #include "vector2.tpp"

@@ -2,10 +2,15 @@
 
 #include <SDL2/SDL.h>
 
+#include "resourceManager.h"
+
 class Game
 {
 public:
     Game(uint32_t targetFPS);
+    Game(Game const&) = delete;
+
+    Game operator=(Game const&) = delete;
 
     /// @brief Initializes and runs the game.
     void run();
@@ -22,4 +27,6 @@ private:
     uint32_t targetFPS;
     SDL_Window *window;
     SDL_Renderer *renderer;
+
+    ResourceManager resourceManager;
 };

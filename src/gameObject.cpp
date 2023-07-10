@@ -12,12 +12,13 @@ GameObject::GameObject(SDL_Renderer *renderer)
 {
 }
 
-void GameObject::setup(GameObject *parent, SDL_Renderer *renderer)
+void GameObject::setup(GameObject *parent, SDL_Renderer *renderer, ResourceManager *resourceManager)
 {
     if (!initialized)
     {
         _parent = parent;
         _renderer = renderer;
+        _resourceManager = resourceManager;
 
         initialized = true;
     }
@@ -67,4 +68,9 @@ GameObject *GameObject::parent() const
 SDL_Renderer *GameObject::renderer() const
 {
     return _renderer;
+}
+
+ResourceManager *GameObject::resourceManager() const
+{
+    return _resourceManager;
 }

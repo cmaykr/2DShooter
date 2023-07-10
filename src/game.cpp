@@ -7,7 +7,7 @@
 #include <iostream>
 
 Game::Game(uint32_t targetFPS)
-    : targetFPS(targetFPS), window(nullptr), renderer(nullptr)
+    : targetFPS(targetFPS), window(nullptr), renderer(nullptr), resourceManager()
 {
 
 }
@@ -23,6 +23,8 @@ void Game::run()
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     SDL_Event event{};
+    resourceManager.changePath("resources/");
+    resourceManager.changeRenderer(renderer);
 
     double accumulatorElapsedTime{};
     Clock clock{};
@@ -30,8 +32,8 @@ void Game::run()
 
     // Sprite test
         GameObject main{};
-        main.setup(nullptr, renderer);
-        main.addChild<Sprite>(renderer, "resources/RubberDucky.png", Vector2{100, 100});
+        main.setup(nullptr, renderer, &resourceManager);
+        main.addChild<Sprite>(renderer, "RubberDucky.png", Vector2{100, 100});
         main.setPosition(Vector2{1000, 200});
     // End Sprite test
 

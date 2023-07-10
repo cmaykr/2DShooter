@@ -22,5 +22,4 @@ private:
     std::string _texturePath;
 
     Vector2<int> _size{};
-    SDL_Texture *texture; // Temporary for testing.
 };
