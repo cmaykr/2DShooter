@@ -1,6 +1,7 @@
 #include "game.h"
 #include "clock.h"
 #include "sprite.h"
+#include "player.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -37,23 +38,35 @@ void Game::run()
         main.setPosition(Vector2{1000, 200});
     // End Sprite test
 
+    // Player class test
+        Player player{};
+        player.setup(nullptr, renderer, &resourceManager);
+        player.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
+    //
+
+
     while (isRunning)
     {
 
         while (SDL_PollEvent(&event))
         {
             handleInput(event);
+
+            player.handleInput(event);
         }
 
         while (accumulatorElapsedTime >= fixedt)
         {
             accumulatorElapsedTime -= fixedt;
             fixedUpdate();
+
+            player.fixedUpdate();
         }
         
         SDL_RenderClear(renderer);
         draw();
         main.draw();
+        player.draw();
         SDL_RenderPresent(renderer);
 
         accumulatorElapsedTime += clock.restart();

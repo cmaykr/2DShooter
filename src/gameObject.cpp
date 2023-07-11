@@ -24,9 +24,9 @@ Vector2<int> GameObject::globalPosition() const
     return _parent->globalPosition() + _position;
 }
 
-void GameObject::handleInput()
+void GameObject::handleInput(SDL_Event const& event)
 {
-    // TODO: Implement
+    // TODO: Implement?
 }
 
 void GameObject::fixedUpdate()

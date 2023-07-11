@@ -22,7 +22,7 @@ public:
 
     Vector2<int> globalPosition() const;
 
-    virtual void handleInput();
+    virtual void handleInput(SDL_Event const& event);
     virtual void fixedUpdate();
     virtual void draw() const;
 
