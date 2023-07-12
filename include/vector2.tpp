@@ -24,15 +24,15 @@ Vector2<T> Vector2<T>::operator-(Vector2<T> const& rhs) const
 }
 
 template <typename T>
-Vector2<T> Vector2<T>::operator*(Vector2<T> const& rhs) const
-{
-
-}
-
-template <typename T>
 Vector2<T> Vector2<T>::operator-() const
 {
     return Vector2{-x, -y};
+}
+
+template <typename T>
+T Vector2<T>::dotProduct(Vector2<T> const& rhs) const
+{
+    return x * rhs.x + y * rhs.y;
 }
 
 template <typename T>

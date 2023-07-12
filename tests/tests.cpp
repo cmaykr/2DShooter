@@ -31,3 +31,12 @@ TEST_CASE("Vector2 integer subtraction")
         CHECK(Vector2{5, 10} - Vector2{-5, -4} == Vector2{10, 14});
     }
 }
+
+TEST_CASE("Vector2 dot product")
+{
+    CHECK(Vector2{5, 0}.dotProduct(Vector2{2, 5}) == 10);
+    CHECK(Vector2{5, 1}.dotProduct(Vector2{2, 5}) == 15);
+    CHECK(Vector2{5, -1}.dotProduct(Vector2{2, 5}) == 5);
+    CHECK(Vector2{-5, 0}.dotProduct(Vector2{2, 5}) == -10);
+    CHECK(Vector2{-5, 0}.dotProduct(Vector2{-2, 5}) == 10);
+}
