@@ -25,17 +25,9 @@ void Player::handleInput(SDL_Event const& event)
 
 void Player::fixedUpdate()
 {
-    Vector2<int> newGlobalPos {globalPosition()};
+    Vector2<int> moveDelta {};
 
-    if (rightVelocity == 1)
-    {
-        newGlobalPos.x += speed;
-    }
-    else if(rightVelocity == -1)
-    {
-        newGlobalPos.x -= speed;
-    }
+    moveDelta.x = speed * rightVelocity;
 
-    setPosition(newGlobalPos);
-
+    move(moveDelta);
 }

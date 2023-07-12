@@ -27,6 +27,7 @@ public:
     virtual void draw() const;
 
     void setPosition(Vector2<int> const& position);
+    void move(Vector2<int> const& positionDelta);
 
     template <typename Object, typename... Args>
     void addChild(Args... args);

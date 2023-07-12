@@ -50,6 +50,11 @@ void GameObject::setPosition(Vector2<int> const& position)
     _position = position;
 }
 
+void GameObject::move(Vector2<int> const &positionDelta)
+{
+    _position += positionDelta;
+}
+
 GameObject *GameObject::parent() const
 {
     return _parent;

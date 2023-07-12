@@ -24,6 +24,13 @@ Vector2<T> Vector2<T>::operator-(Vector2<T> const& rhs) const
 }
 
 template <typename T>
+Vector2<T> Vector2<T>::operator+=(Vector2<T> const& rhs)
+{
+    *this = *this + rhs;
+    return *this;
+}
+
+template <typename T>
 Vector2<T> Vector2<T>::operator-() const
 {
     return Vector2{-x, -y};

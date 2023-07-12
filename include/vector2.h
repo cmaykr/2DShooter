@@ -13,6 +13,7 @@ public:
 
     Vector2<T> operator+(Vector2<T> const& rhs) const;
     Vector2<T> operator-(Vector2<T> const& rhs) const;
+    Vector2<T> operator+=(Vector2<T> const& rhs);
     T dotProduct(Vector2<T> const& rhs) const;
 
     Vector2<T> operator-() const;
