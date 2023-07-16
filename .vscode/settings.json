@@ -71,6 +71,15 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "*.tpp": "cpp"
-    }
+        "*.tpp": "cpp",
+        "bitset": "cpp",
+        "regex": "cpp"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/david/Documents/Projects/2DShooter/bin",
+            "binaryPath": "/home/david/Documents/Projects/2DShooter/bin/main",
+            "binaryArgs": []
+        }
+    ]
 }

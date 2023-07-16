@@ -2,22 +2,13 @@
 
 #include <iostream>
 
-GameObject::GameObject(GameObject *parent)
-    : _parent(parent)
-{
-}
-
-GameObject::GameObject(SDL_Renderer *renderer)
-    : _renderer(renderer)
-{
-}
-
-void GameObject::setup(GameObject *parent, SDL_Renderer *renderer)
+void GameObject::setup(GameObject *parent, SDL_Renderer *renderer, ResourceManager *resourceManager)
 {
     if (!initialized)
     {
         _parent = parent;
         _renderer = renderer;
+        _resourceManager = resourceManager;
 
         initialized = true;
     }
@@ -33,9 +24,9 @@ Vector2<int> GameObject::globalPosition() const
     return _parent->globalPosition() + _position;
 }
 
-void GameObject::handleInput()
+void GameObject::handleInput(SDL_Event const& event)
 {
-    // TODO: Implement
+    // TODO: Implement?
 }
 
 void GameObject::fixedUpdate()
@@ -59,6 +50,11 @@ void GameObject::setPosition(Vector2<int> const& position)
     _position = position;
 }
 
+void GameObject::move(Vector2<int> const &positionDelta)
+{
+    _position += positionDelta;
+}
+
 GameObject *GameObject::parent() const
 {
     return _parent;
@@ -67,4 +63,9 @@ GameObject *GameObject::parent() const
 SDL_Renderer *GameObject::renderer() const
 {
     return _renderer;
+}
+
+ResourceManager *GameObject::resourceManager() const
+{
+    return _resourceManager;
 }

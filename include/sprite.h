@@ -9,7 +9,7 @@
 class Sprite : public GameObject
 {
 public:
-    Sprite(SDL_Renderer * renderer, std::string const& texturePath, Vector2<int> const& size);
+    Sprite(std::string const& texturePath, Vector2<int> const& size);
     Sprite(Sprite const&) = delete; // TODO?: Implement
 
     Sprite operator=(Sprite const&) = delete; // TODO?: Implement
@@ -22,5 +22,4 @@ private:
     std::string _texturePath;
 
     Vector2<int> _size{};
-    SDL_Texture *texture; // Temporary for testing.
 };

@@ -1,13 +1,14 @@
 #include "game.h"
 #include "clock.h"
 #include "sprite.h"
+#include "player.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
 Game::Game(uint32_t targetFPS)
-    : targetFPS(targetFPS), window(nullptr), renderer(nullptr)
+    : targetFPS(targetFPS), window(nullptr), renderer(nullptr), resourceManager()
 {
 
 }
@@ -23,6 +24,8 @@ void Game::run()
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     SDL_Event event{};
+    resourceManager.changePath("resources/");
+    resourceManager.changeRenderer(renderer);
 
     double accumulatorElapsedTime{};
     Clock clock{};
@@ -30,10 +33,17 @@ void Game::run()
 
     // Sprite test
         GameObject main{};
-        main.setup(nullptr, renderer);
-        main.addChild<Sprite>(renderer, "resources/RubberDucky.png", Vector2{100, 100});
+        main.setup(nullptr, renderer, &resourceManager);
+        main.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
         main.setPosition(Vector2{1000, 200});
     // End Sprite test
+
+    // Player class test
+        Player player{};
+        player.setup(nullptr, renderer, &resourceManager);
+        player.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
+    //
+
 
     while (isRunning)
     {
@@ -41,17 +51,22 @@ void Game::run()
         while (SDL_PollEvent(&event))
         {
             handleInput(event);
+
+            player.handleInput(event);
         }
 
         while (accumulatorElapsedTime >= fixedt)
         {
             accumulatorElapsedTime -= fixedt;
             fixedUpdate();
+
+            player.fixedUpdate();
         }
         
         SDL_RenderClear(renderer);
         draw();
         main.draw();
+        player.draw();
         SDL_RenderPresent(renderer);
 
         accumulatorElapsedTime += clock.restart();
