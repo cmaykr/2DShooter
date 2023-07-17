@@ -2,13 +2,13 @@
 
 #include <iostream>
 
-void GameObject::setup(GameObject *parent, SDL_Renderer *renderer, ResourceManager *resourceManager)
+void GameObject::setup(GameObject *parent, Game *game)
 {
     if (!initialized)
     {
         _parent = parent;
-        _renderer = renderer;
-        _resourceManager = resourceManager;
+        _game = game;
+
 
         initialized = true;
     }
@@ -60,12 +60,7 @@ GameObject *GameObject::parent() const
     return _parent;
 }
 
-SDL_Renderer *GameObject::renderer() const
+Game *GameObject::game() const
 {
-    return _renderer;
-}
-
-ResourceManager *GameObject::resourceManager() const
-{
-    return _resourceManager;
+    return _game;
 }

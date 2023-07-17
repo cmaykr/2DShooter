@@ -15,5 +15,5 @@ void GameObject::addChild(Args... args)
 
     auto &child = children.back();
 
-    child->setup(this, _renderer, _resourceManager);
+    child->setup(this, game());
 }

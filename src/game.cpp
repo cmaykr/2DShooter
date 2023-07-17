@@ -8,9 +8,29 @@
 #include <iostream>
 
 Game::Game(uint32_t targetFPS)
-    : targetFPS(targetFPS), window(nullptr), renderer(nullptr), resourceManager()
+    : targetFPS(targetFPS), _window(nullptr), _renderer(nullptr), _resourceManager()
 {
 
+}
+
+SDL_Window *Game::window() const
+{
+    return _window;
+}
+
+SDL_Renderer *Game::renderer() const
+{
+    return _renderer;
+}
+
+ResourceManager *Game::resourceManager()
+{
+    return &_resourceManager;
+}
+
+MouseManager *Game::mouseManager()
+{
+    return &_mouseManager;
 }
 
 void Game::run()
@@ -19,13 +39,13 @@ void Game::run()
     isRunning = true;
 
     // TODO: Variable resolution.
-    window = SDL_CreateWindow("2DShooter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, 0);
+    _window = SDL_CreateWindow("2DShooter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, 0);
 
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    _renderer = SDL_CreateRenderer(_window, -1, 0);
 
     SDL_Event event{};
-    resourceManager.changePath("resources/");
-    resourceManager.changeRenderer(renderer);
+    _resourceManager.changePath("resources/");
+    _resourceManager.changeRenderer(_renderer);
 
     double accumulatorElapsedTime{};
     Clock clock{};
@@ -33,14 +53,14 @@ void Game::run()
 
     // Sprite test
         GameObject main{};
-        main.setup(nullptr, renderer, &resourceManager);
+        main.setup(nullptr, this);
         main.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
         main.setPosition(Vector2{1000, 200});
     // End Sprite test
 
     // Player class test
         Player player{};
-        player.setup(nullptr, renderer, &resourceManager);
+        player.setup(nullptr, this);
         player.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
     //
 
@@ -62,12 +82,14 @@ void Game::run()
 
             player.fixedUpdate();
         }
+
+        _mouseManager.update(); // Should this update on a fixed timeframe?
         
-        SDL_RenderClear(renderer);
+        SDL_RenderClear(_renderer);
         draw();
         main.draw();
         player.draw();
-        SDL_RenderPresent(renderer);
+        SDL_RenderPresent(_renderer);
 
         accumulatorElapsedTime += clock.restart();
     }
@@ -90,5 +112,5 @@ void Game::fixedUpdate()
 
 void Game::draw() const
 {
-    SDL_SetRenderDrawColor(renderer, 20, 20, 20, 0);
+    SDL_SetRenderDrawColor(_renderer, 20, 20, 20, 0);
 }
