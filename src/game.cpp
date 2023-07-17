@@ -73,6 +73,7 @@ void Game::run()
             handleInput(event);
 
             player.handleInput(event);
+            _mouseManager.handleInput(&event);
         }
 
         while (accumulatorElapsedTime >= fixedt)

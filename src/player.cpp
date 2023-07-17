@@ -29,5 +29,10 @@ void Player::fixedUpdate()
 
     moveDelta.x = speed * rightVelocity;
 
-    move(moveDelta);
+    if (moveDelta.x != 0)
+        move(moveDelta);
+    else if (game()->mouseManager()->leftButtonPressed())
+    {
+        setPosition(game()->mouseManager()->getMousePosition());
+    }
 }

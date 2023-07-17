@@ -5,10 +5,17 @@
 void MouseManager::update()
 {
     SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
+}
 
-    leftButtonPressedLastFrame = _leftButtonPressed;
+void MouseManager::handleInput(SDL_Event *event)
+{
+    _leftButtonPressed = false;
 
-    // TODO: Implement checking for left mouse button press
+    // Currently only checks if any mouse button is pressed.
+    if (event->type == SDL_MOUSEBUTTONDOWN)
+    {
+        _leftButtonPressed = true; 
+    }
 
 }
 
@@ -19,5 +26,5 @@ Vector2<int> MouseManager::getMousePosition() const
 
 bool MouseManager::leftButtonPressed() const
 {
-    return _leftButtonPressed != leftButtonPressedLastFrame;
+    return _leftButtonPressed;
 }
