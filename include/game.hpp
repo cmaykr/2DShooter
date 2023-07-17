@@ -2,7 +2,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "resourceManager.h"
+#include "resourceManager.hpp"
+#include "mouseManager.hpp"
 
 class Game
 {
@@ -29,4 +30,5 @@ private:
     SDL_Renderer *renderer;
 
     ResourceManager resourceManager;
+
 };

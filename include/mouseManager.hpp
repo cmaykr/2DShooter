@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vector2.h"
+#include "vector2.hpp"
 #include "inputManager.hpp"
 
 class MouseManager : public InputManager

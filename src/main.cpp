@@ -1,4 +1,4 @@
-#include "game.h"
+#include "game.hpp"
 
 // TODO: Read in all values from "external" source, e.g text file.
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "gameObject.h"
-#include "vector2.h"
+#include "gameObject.hpp"
+#include "vector2.hpp"
 
 class Player: public GameObject
 {

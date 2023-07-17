@@ -1,4 +1,4 @@
-#include "sprite.h"
+#include "sprite.hpp"
 
 #include <SDL2/SDL_image.h>
 #include <iostream>

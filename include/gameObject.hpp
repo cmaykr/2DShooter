@@ -1,7 +1,7 @@
 #pragma once
 
-#include "vector2.h"
-#include "resourceManager.h"
+#include "vector2.hpp"
+#include "resourceManager.hpp"
 
 #include <memory>
 #include <vector>

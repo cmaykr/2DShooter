@@ -1,4 +1,4 @@
-#include "vector2.h"
+#include "vector2.hpp"
 
 template <typename T>
 Vector2<T>::Vector2(T const& x, T const& y)
