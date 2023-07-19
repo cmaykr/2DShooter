@@ -9,12 +9,16 @@ void MouseManager::update()
 
 void MouseManager::handleInput(SDL_Event *event)
 {
-    _leftButtonPressed = false;
+    _leftButtonHasPressed = _leftButtonPressed;
 
     // Currently only checks if any mouse button is pressed.
     if (event->type == SDL_MOUSEBUTTONDOWN)
     {
         _leftButtonPressed = true; 
+    }
+    else
+    {
+        _leftButtonPressed = false;
     }
 
 }
@@ -24,7 +28,7 @@ Vector2<int> MouseManager::getMousePosition() const
     return mousePosition;
 }
 
-bool MouseManager::leftButtonPressed() const
+bool MouseManager::leftButtonHasPressed() const
 {
-    return _leftButtonPressed;
+    return !_leftButtonPressed && _leftButtonHasPressed;
 }

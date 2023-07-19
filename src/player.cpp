@@ -31,7 +31,7 @@ void Player::fixedUpdate()
 
     if (moveDelta.x != 0)
         move(moveDelta);
-    else if (game()->mouseManager()->leftButtonPressed())
+    else if (game()->mouseManager()->leftButtonHasPressed())
     {
         setPosition(game()->mouseManager()->getMousePosition());
     }
