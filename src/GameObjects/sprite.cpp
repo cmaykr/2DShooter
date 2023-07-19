@@ -1,4 +1,4 @@
-#include "sprite.hpp"
+#include "GameObjects/sprite.hpp"
 
 #include <SDL2/SDL_image.h>
 #include <iostream>

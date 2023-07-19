@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 
 #include "resourceManager.hpp"
-#include "mouseManager.hpp"
+#include "InputClasses/mouseManager.hpp"
 
 class Game
 {

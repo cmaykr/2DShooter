@@ -1,4 +1,4 @@
-#include "gameObject.hpp"
+#include "GameObjects/gameObject.hpp"
 
 #include <stdexcept>
 

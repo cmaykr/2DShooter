@@ -1,4 +1,4 @@
-#include "player.hpp"
+#include "GameObjects/player.hpp"
 
 void Player::handleInput(SDL_Event const& event)
 {

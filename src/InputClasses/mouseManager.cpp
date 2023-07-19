@@ -1,4 +1,4 @@
-#include "mouseManager.hpp"
+#include "InputClasses/mouseManager.hpp"
 
 #include <SDL2/SDL.h>
 

@@ -1,7 +1,7 @@
 #include "game.hpp"
 #include "clock.hpp"
-#include "sprite.hpp"
-#include "player.hpp"
+#include "GameObjects/sprite.hpp"
+#include "GameObjects/player.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>

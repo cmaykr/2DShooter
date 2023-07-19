@@ -1,7 +1,7 @@
 #pragma once
 
 #include "vector2.hpp"
-#include "gameObject.hpp"
+#include "GameObjects/gameObject.hpp"
 
 #include <string>
 #include <SDL2/SDL.h>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gameObject.hpp"
+#include "GameObjects/gameObject.hpp"
 #include "vector2.hpp"
 
 class Player: public GameObject
