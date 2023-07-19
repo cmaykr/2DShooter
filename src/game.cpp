@@ -2,6 +2,7 @@
 #include "clock.hpp"
 #include "GameObjects/sprite.hpp"
 #include "GameObjects/player.hpp"
+#include "GameObjects/camera.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -90,6 +91,7 @@ void Game::run()
         draw();
         main.draw();
         player.draw();
+        
         SDL_RenderPresent(_renderer);
 
         accumulatorElapsedTime += clock.restart();
