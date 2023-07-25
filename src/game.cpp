@@ -3,6 +3,7 @@
 #include "GameObjects/sprite.hpp"
 #include "GameObjects/player.hpp"
 #include "GameObjects/camera.hpp"
+#include "Serialization/deSerialization.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -37,7 +38,7 @@ MouseManager *Game::mouseManager()
 void Game::run()
 {
     SDL_Init(SDL_INIT_EVERYTHING);
-    isRunning = true;
+    isRunning = false;
 
     // TODO: Variable resolution.
     _window = SDL_CreateWindow("2DShooter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, 0);
@@ -64,6 +65,9 @@ void Game::run()
         player.setup(nullptr, this);
         player.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
     //
+
+    DeSerialization test{"testfile.txt"};
+    test.readLine<std::string>("hej");
 
 
     while (isRunning)
