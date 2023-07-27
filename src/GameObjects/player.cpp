@@ -1,4 +1,4 @@
-#include "player.h"
+#include "GameObjects/player.hpp"
 
 void Player::handleInput(SDL_Event const& event)
 {
@@ -29,5 +29,10 @@ void Player::fixedUpdate()
 
     moveDelta.x = speed * rightVelocity;
 
-    move(moveDelta);
+    if (moveDelta.x != 0)
+        move(moveDelta);
+    else if (game()->mouseManager()->leftButtonHasPressed())
+    {
+        setPosition(game()->mouseManager()->getMousePosition());
+    }
 }

@@ -2,7 +2,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "resourceManager.h"
+#include "resourceManager.hpp"
+#include "InputClasses/mouseManager.hpp"
 
 class Game
 {
@@ -11,6 +12,11 @@ public:
     Game(Game const&) = delete;
 
     Game operator=(Game const&) = delete;
+
+    SDL_Window *window() const;
+    SDL_Renderer *renderer() const;
+    ResourceManager *resourceManager();
+    MouseManager *mouseManager();
 
     /// @brief Initializes and runs the game.
     void run();
@@ -25,8 +31,10 @@ private:
     bool isRunning{false};
 
     uint32_t targetFPS;
-    SDL_Window *window;
-    SDL_Renderer *renderer;
 
-    ResourceManager resourceManager;
+    SDL_Window *_window;
+    SDL_Renderer *_renderer;
+    ResourceManager _resourceManager{};
+    MouseManager _mouseManager{};
+
 };

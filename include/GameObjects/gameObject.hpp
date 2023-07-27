@@ -1,7 +1,8 @@
 #pragma once
 
-#include "vector2.h"
-#include "resourceManager.h"
+#include "vector2.hpp"
+#include "resourceManager.hpp"
+#include "game.hpp"
 
 #include <memory>
 #include <vector>
@@ -16,7 +17,7 @@ public:
 
     /// The function initializes/sets up the gameobject.
     /// Function should be called before the gameobject is used.
-    void setup(GameObject * parent, SDL_Renderer * renderer, ResourceManager *resourceManager);
+    void setup(GameObject * parent, Game *game);
     
     GameObject operator=(GameObject const& rhs) = delete;
 
@@ -33,15 +34,14 @@ public:
     void addChild(Args... args);
 protected:
     GameObject *parent() const;
-    SDL_Renderer *renderer() const;
-    ResourceManager* resourceManager() const;
+    Game *game() const;
 private:
     bool initialized{false};
 
     Vector2<int> _position{};
     GameObject *_parent{};
-    SDL_Renderer *_renderer{};
-    ResourceManager *_resourceManager{};
+
+    Game *_game{};
 
     std::vector<std::unique_ptr<GameObject>> children{};
 };

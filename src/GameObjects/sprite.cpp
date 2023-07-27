@@ -1,4 +1,4 @@
-#include "sprite.h"
+#include "GameObjects/sprite.hpp"
 
 #include <SDL2/SDL_image.h>
 #include <iostream>
@@ -22,9 +22,9 @@ Vector2<int> Sprite::size() const
 void Sprite::draw() const
 {
     // Temporary
-    if (!resourceManager()->textureExists(_texturePath))
+    if (!game()->resourceManager()->textureExists(_texturePath))
     {
-        resourceManager()->addTexture(_texturePath);
+        game()->resourceManager()->addTexture(_texturePath);
     }
     //
 
@@ -34,5 +34,5 @@ void Sprite::draw() const
     dsrect.x = globalPosition().x;
     dsrect.y = globalPosition().y;
 
-    SDL_RenderCopy(renderer(), resourceManager()->getTexture(_texturePath), NULL, &dsrect);
+    SDL_RenderCopy(game()->renderer(), game()->resourceManager()->getTexture(_texturePath), NULL, &dsrect);
 }
