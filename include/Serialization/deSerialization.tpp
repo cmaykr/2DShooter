@@ -1,58 +1,26 @@
 #include "deSerialization.hpp"
 
-#include <fstream>
 #include <string>
-#include <algorithm>
-#include <vector>
-#include <map>
-#include <iterator>
-#include <iostream>
-#include <stdexcept>
+#include <sstream>
 
 template <typename T>
-T DeSerialization::readLine(std::string const& keyword) const
+T DeSerialization::readValue(std::string const& keyword) const
 {
     // TODO: Make it not bad code.
     // Function should only read one line and return the lines value.
     // Currently reads the whole file.
 
-    std::ifstream ifs{"resources/" + filename};
+    auto it = parsedLines.find(keyword);
 
-    std::vector<std::string> lines{};
-    
-    std::string line{};
-    while (getline(ifs, line))
+    if (it == parsedLines.end())
     {
-        lines.push_back(line);
+        throw std::out_of_range("Keyword not found, letter should only be lowercase."); // TODO: Better error message
     }
 
-    std::map<std::string, T> parsed{};
+    std::istringstream ss{it->second};
 
-    std::for_each(lines.begin(), lines.end(),
-    [&parsed](std::string const& line)
-    {
-        auto it = std::find(line.begin(), line.end(), ':');
+    T value{};
+    ss >> value;
 
-        if (it == line.end())
-        {
-            throw std::out_of_range(": not found in line, check resource file.");
-        }
-
-        T value{};
-        std::string key{};
-        it++;
-        std::copy(line.begin(), it, std::inserter(key, key.begin()));
-        it++;
-        std::copy(it, line.end(), std::inserter(value, value.begin()));
-
-        parsed[key] = value;
-
-        std::cout << key << " " << value << std::endl;
-    }
-    );
-
-
-    ifs.close();
-
-    return "parsed.begin()->second()";
+    return value;
 }

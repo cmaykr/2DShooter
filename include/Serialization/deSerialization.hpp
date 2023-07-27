@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 
 class DeSerialization
 {
@@ -15,9 +16,10 @@ public:
     /// @param keyword Which word in the file the function will search for to read in the value.
     /// @return The value on the same line the keyword is on. 
     template <typename T>
-    T readLine(std::string const& keyword) const;
+    T readValue(std::string const& keyword) const;
 private:
     std::string filename;
+    std::map<std::string, std::string> parsedLines{};
 };
 
 #include "deSerialization.tpp"

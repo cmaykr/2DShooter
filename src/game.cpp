@@ -67,7 +67,7 @@ void Game::run()
     //
 
     DeSerialization test{"testfile.txt"};
-    test.readLine<std::string>("hej");
+    std::cout << test.readValue<std::string>("hej") << std::endl;
 
 
     while (isRunning)
