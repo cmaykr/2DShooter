@@ -1,9 +1,9 @@
-#include "Serialization/deSerialization.hpp"
+#include "Serialization/serializationObject.hpp"
 
 #include <fstream>
 #include <algorithm>
 
-DeSerialization::DeSerialization(std::string const& _filename)
+SerializationObject::SerializationObject(std::string const& _filename)
     : filename(_filename)
 {
     std::ifstream ifs{"resources/" +  filename};
@@ -24,8 +24,4 @@ DeSerialization::DeSerialization(std::string const& _filename)
 
         parsedLines[key] = value;
     }
-}
-
-void DeSerialization::DeSerialize() const
-{
 }

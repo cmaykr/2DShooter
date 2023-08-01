@@ -3,7 +3,7 @@
 #include "GameObjects/sprite.hpp"
 #include "GameObjects/player.hpp"
 #include "GameObjects/camera.hpp"
-#include "Serialization/deSerialization.hpp"
+#include "Serialization/serializationObject.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -58,17 +58,13 @@ void Game::run()
         main.setup(nullptr, this);
         main.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
         main.setPosition(Vector2{1000, 200});
-    // End Sprite test
+    // End Sprite test. Temp
 
     // Player class test
         Player player{};
         player.setup(nullptr, this);
         player.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
-    //
-
-    DeSerialization test{"testfile.txt"};
-    std::cout << test.readValue<std::string>("hej") << std::endl;
-
+    // Temp
 
     while (isRunning)
     {

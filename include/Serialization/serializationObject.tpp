@@ -1,10 +1,10 @@
-#include "deSerialization.hpp"
+#include "serializationObject.hpp"
 
 #include <string>
 #include <sstream>
 
 template <typename T>
-T DeSerialization::readValue(std::string const& keyword) const
+T SerializationObject::readValue(std::string const& keyword) const
 {
     // TODO: Make it not bad code.
     // Function should only read one line and return the lines value.

@@ -3,13 +3,13 @@
 #include <string>
 #include <map>
 
-class DeSerialization
+class SerializationObject
 {
 public:
-    DeSerialization(std::string const& filename);
-    virtual ~DeSerialization() = default;
+    SerializationObject(std::string const& filename);
+    virtual ~SerializationObject() = default;
 
-    virtual void DeSerialize() const;
+    virtual void deSerialize() const = 0;
 
     /// @brief Reads one line from a chosen file.
     /// @tparam Type Should be the type the value on the line is.
@@ -22,4 +22,4 @@ private:
     std::map<std::string, std::string> parsedLines{};
 };
 
-#include "deSerialization.tpp"
+#include "serializationObject.tpp"
