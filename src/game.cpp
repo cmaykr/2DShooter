@@ -3,7 +3,7 @@
 #include "GameObjects/sprite.hpp"
 #include "GameObjects/player.hpp"
 #include "GameObjects/camera.hpp"
-#include "Serialization/serializationObject.hpp"
+#include "Serialization/playerData.hpp"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -53,18 +53,23 @@ void Game::run()
     Clock clock{};
     double fixedt{1000.0 / static_cast<double>(targetFPS)};
 
-    // Sprite test
-        GameObject main{};
-        main.setup(nullptr, this);
-        main.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
-        main.setPosition(Vector2{1000, 200});
-    // End Sprite test. Temp
+    // TODO: Make into unit tests.
+        // Sprite test
+            GameObject main{};
+            main.setup(nullptr, this);
+            main.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
+            main.setPosition(Vector2{1000, 200});
+        // End Sprite test. Temp
 
-    // Player class test
-        Player player{};
-        player.setup(nullptr, this);
-        player.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
-    // Temp
+        // Player class test
+            Player player{};
+            player.setup(nullptr, this);
+            player.addChild<Sprite>("RubberDucky.png", Vector2{100, 100});
+        // Temp
+    //
+
+    PlayerData playerData{"playerData.txt"};
+    playerData.deSerialize();
 
     while (isRunning)
     {

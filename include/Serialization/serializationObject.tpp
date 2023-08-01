@@ -2,14 +2,11 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
 
 template <typename T>
 T SerializationObject::readValue(std::string const& keyword) const
 {
-    // TODO: Make it not bad code.
-    // Function should only read one line and return the lines value.
-    // Currently reads the whole file.
-
     auto it = parsedLines.find(keyword);
 
     if (it == parsedLines.end())
@@ -21,6 +18,7 @@ T SerializationObject::readValue(std::string const& keyword) const
 
     T value{};
     ss >> value;
+
 
     return value;
 }
